@@ -1,0 +1,56 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+using static System.Console;
+using System;
+using System.Collections.Generic;
+
+class Solution
+{
+    static void Main(string[] args)
+    {
+        
+        //matchingStrings has the following parameters:
+        //string strings[n] - an array of strings to search
+        //string queries[q] - an array of query strings
+        //There is a collection of input strings and a collection of query strings.
+       
+       //we gotta count the number of integers or numbers in the given array. 
+        var c = int.Parse(Console.ReadLine());//count
+       // this is our collection of strings
+        var m = new Dictionary<string, int>();//map
+        // The first line contains integer n, the size of strings[].
+        //each of the next n lines contains a string strings[i]
+        for (var i = 0; i < c; i++)
+        {
+            var input = Console.ReadLine();//input
+            if (m.ContainsKey(input))
+                m[input]++;
+            else
+                m.Add(input, 1);
+        }
+
+        var qc = int.Parse(Console.ReadLine());//query count
+        var o = new int[qc];//output
+     // For each query string, determine how many times it occurs in the list of input strings.
+        for (var i = 0; i < qc; i++)
+        {
+            var qs = Console.ReadLine();//query string
+            if (m.ContainsKey(qs))
+                o[i] = m[qs];
+        }
+//Return an array of the results.
+        foreach (var item in o)
+            Console.WriteLine(item);
+    }
+}
