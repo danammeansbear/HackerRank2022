@@ -12,7 +12,6 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System;
 using static System.Console;
-using System.Linq;
 class Result
 {
 
@@ -21,38 +20,32 @@ class Result
      *
      * The function accepts INTEGER_ARRAY arr as parameter.
      */
-/*
-1. Store all the input five numbers in an array
-2. Let the highest and the lowest number in the array be h and 1.  Initialize h to 0 and 1 to the greatest possible number(Max of the data type in the programming language we happen to be using C#
-3. let the sum ofr all five  numbers in the array b s. initialize s to 0.
-4. interate through five elements of array using a loop
-    4.1 let the current number be c.
-    4.2 Increment s by c.
-    4.3 If c is less then 1 then set 1 to c.
-    4.4 if c is greater then h then set h to c.
-    4.5 repeat steps 4.1 through 4.4 for all five elements of the array.
-    5. print the outcome of s - h and s - 1 on the same line on console seperated by space.)
-*/
-class Solution{
-    static void Main(String[] args){
-        var numbers = ReadLine().Split(' ').Select(x => long.Parse(x)).ToList();
-        var sumOfAllNumbers = 0L;
-        var minimum = long.MaxValue;
-        var maximum = 0L;
-        
-        for (int i = 0; i < 5; i++)
-        {
-            sumOfAllNumbers += numbers[i];
-            if (numbers[i] < minimum)
-                minimum = numbers[i];
-            
-            if (numbers[i] > maximum)
-                maximum = numbers[i];
+
+    public static void miniMaxSum(List<int> arr)
+    {
+        var sum = 0L;
+        var min = long.MaxValue;
+        var max = 0L;
+        for(int i = 0; i < 5; i++){
+            sum+= arr[i];
+            if (arr[i] < min)
+                min = arr[i];
+            else
+                max = arr[i];
         }
-        WriteLine(string.Format("{0} {1}", sumOfAllNumbers - maximum, sumOfAllNumbers - minimum));
+        WriteLine(string.Format("{0} {1}", sum - max, sum - min));
+
+    }
+
+}
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+
+        List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
+
+        Result.miniMaxSum(arr);
     }
 }
-
- 
-}
-
