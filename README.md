@@ -1,0 +1,3 @@
+# HackerRank2022
+Answers for hackerrank problems ive made so i can practice and get better
+all solutions in C# except one but im working on that....
